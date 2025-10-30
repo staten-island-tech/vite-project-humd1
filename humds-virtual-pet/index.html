@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>humds-virtual-pet</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class = "heading">
+        <h1>Your Virtual Pet</h1>
+        <h2>By Humd Baig</h2>
+    </div>
+    <div class="menu">
+      <div class="color themes">
+      <button id="light">light</button>
+      <button id="dark">dark</button>
+      <button id="PLACEHOLDER">PLACEHOLDER</button>
+      </div>
+    <select name="pets">
+        <option value="PLACHOLDER">PET 1</option>
+        <option value="PLACEHOLDER">PET 2</option>
+        <option value="PLACEHOLDER">PET 3</option>
+    </select>
+    </div>
+<section class="container">
+    <div class="petwindow">PET PLACEHOLDER
+        <img src="" alt="">
+    </div>
+    <div class= "stats">
+        <p>Hunger: <span id="hunger">50</span></p>
+        <p>Happiness: <span id="happiness">50</span></p>
+        <p>Energy: <span id="energy">50</span></p>
+        <h3>"Your pet is _____!</h3>
+    </div>
+    <div class="actions">
+        <button id="feed">Feed</button>
+        <button id="play">Play</button>
+        <button id="sleep">Sleep</button>
+    </div>
+</section>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
