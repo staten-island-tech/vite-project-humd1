@@ -6,6 +6,7 @@ body,
   margin: 0;
   box-sizing: border-box;
   text-align: center;
+  color: var(--textcolor);
 }
 
 .jersey-10-regular {
@@ -21,13 +22,16 @@ body,
 }
 
 .heading{
-  margin-top: 20px;
-  background-color: var(--mid-gray);
+  background-color: var(--divcolor);
   border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  
 }
 
 .heading h1{
-  font-size: 60px;
+  font-size: 100px;
+  letter-spacing: 2px;
   margin: 20px;
   font-family: "Jersey 10", sans-serif;
 }
@@ -35,7 +39,6 @@ body,
 .heading h2{
   font-size: 30px;
   font-family: "VT323", monospace;
-  margin: 10px;
 }
 
 button{
@@ -44,8 +47,9 @@ button{
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
-  border: 2px solid var(--dark-gray);
-  background-color: var(--light-gray);
+  border: 2px solid var(--textcolor);
+  background-color: var(--divcolor);
+  color: var(--textcolor);
 }
 
 .select{
@@ -54,19 +58,30 @@ button{
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
-  border: 2px solid var(--dark-gray);
-  background-color: var(--light-gray);
+  border: 2px solid var(--textcolor);
+  background-color: var(--divcolor);
 }
 
 .menu{
-  background-color: var(--mid-gray);
+  background-color: var(--divcolor);
   border-radius: 20px;
+  margin: 20px;
   font-family: "Jersey 10", sans-serif;
+  padding-top: 20px;
+}
+
+.menu h2{
+  line-height: 50px;
+  letter-spacing: 2px;
 }
 
 .petwindow{
-  background-color: var(--mid-gray);
+  background-color: var(--divcolor);
   border-radius: 20px;
+  width: 400px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 img{
@@ -75,13 +90,16 @@ img{
 }
 
 .stats{
-  background-color: var(--mid-gray);
+  background-color: var(--divcolor);
   border-radius: 20px;
   font-family: "VT323", monospace;
+  padding: 20px;
+  margin: 20px;
+  line-height: 50px;
 }
 
 .actions{
-  background-color: var(--mid-gray);
+  background-color: var(--divcolor);
   border-radius: 20px;
   font-family: "Jersey 10", sans-serif;
 }
@@ -95,29 +113,44 @@ img{
 }
 
 :root {
-  --light-gray: #626262;
-  --mid-gray: #414141;
-  --dark-gray: #101010;
-  --light: #ffffff;
+  --light-gray: #b5b5b5;
+  --mid-gray: #767676;
+  --dark-gray: #363636;
+  --light: #f5f5f5;
   --dark: #000000;
-  --yellow: #f6eda1;
+  --lightred: #ffcdcd;
+  --red: #f25d5d;
+  --darkred: #561818;
 
 
   /* Intentions */
   --primary: var(--light);
-  --secondary: var(--yellow);
+  --secondary: var(--dark);
 }
 
 .lightmode {
   background-color: var(--light);
-  color: var(--dark);
+  --textcolor: var(--dark);
+  --divcolor: var(--light-gray);
 }
 
 .darkmode {
   background-color: var(--dark);
-  color: var(--light);
+  --textcolor: var(--light);
+  --divcolor: var(--dark-gray);
 }
 
+.warm {
+  background-color: var(--lightred);
+  --textcolor: var(--darkred);
+  --divcolor: var(--red);
+}
+
+.cold{
+  background-color: #d0f0ff;
+  --textcolor: #00334e;
+  --divcolor: #66b2ff;
+}
 
 
 @media screen and (max-width: 600px) {
