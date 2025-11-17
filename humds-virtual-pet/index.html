@@ -10,40 +10,53 @@
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
     </style>
   </head>
-  <body>
     <div id="app"></div>
     <div class = "heading">
-        <h1>Your Virtual Pet</h1>
-        <h2>By Humd Baig</h2>
+        <h1>Raise a Pokemon</h1>
+        <h2>By Humd Baig!</h2>
     </div>
     <div class="menu">
-      <div class="color themes">
+      <div class="colorthemes">
         <h2>Color Themes:</h2>
-      <button id="light">light</button>
-      <button id="dark">dark</button>
-      <button id="warm">warm</button>
-      <button id="cold">cold</button>
+      <button id="default" class="colorselector">default</button>
+      <button id="light" class = "colorselector">light</button>
+      <button id="dark" class= "colorselector">dark</button>
+      <button id="cold" class = "colorselector">cold</button>
+      <button id="warm" class = "colorselector">warm</button>
       </div>
-    <select name="pets" class="select">
-        <option value="PLACHOLDER">PET 1</option>
-        <option value="PLACEHOLDER">PET 2</option>
-        <option value="PLACEHOLDER">PET 3</option>
-    </select>
+
+      <div class="textsizes">
+      <h2>Text Sizes:</h2>
+      <button id="default" class = "textselector" id="defaulttext"> default</button>
+      <button id="small" class = "textselector" id="smalltext"> small</button>
+      <button id="large" class = "textselector" id="largetext"> large </button>
+      </div>
+
+      <div class= "pets">
+      <h2>Pets:</h2>
+      <button> view pets</button>
+      </div>
+
     </div>
-<section class="container">
     <div class="petwindow">
         <img src="" alt="">
     </div>
+  
+<section class="container">
     <div class= "stats">
-        <p>Hunger: <span id="hunger">50</span></p>
-        <p>Happiness: <span id="happiness">50</span></p>
-        <p>Energy: <span id="energy">50</span></p>
+        <p>Hunger: <span id="hunger"></span></p>
+        <p>Happiness: <span id="happiness"></span></p>
+        <p>Energy: <span id="energy"></span></p>
         <h3>"Your pet is _____!</h3>
     </div>
     <div class="actions">
         <button id="feed">Feed</button>
         <button id="play">Play</button>
         <button id="sleep">Sleep</button>
+    </div>
+    <div class="">
+      <button id="save">save game</button>
+      <button id="reset">reset your game</button>
     </div>
 </section>
     <script type="module" src="/src/main.js"></script>

@@ -1,11 +1,10 @@
 html,
 body,
 * {
-  font-size: 30px;
+  font-size: var(--textsize);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  text-align: center;
   color: var(--textcolor);
 }
 
@@ -26,24 +25,23 @@ body,
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
-  
+  text-align: center;
 }
 
 .heading h1{
-  font-size: 100px;
+  font-size: var(--textsize)*2;
   letter-spacing: 2px;
   margin: 20px;
   font-family: "Jersey 10", sans-serif;
 }
 
 .heading h2{
-  font-size: 30px;
+  font-size: var(--textsize)*1.2;
   font-family: "VT323", monospace;
 }
 
 button{
   font-family: "VT323", monospace;
-  font-size: 25px;
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
@@ -52,26 +50,42 @@ button{
   color: var(--textcolor);
 }
 
-.select{
-  font-family: "VT323", monospace;
-  font-size: 25px;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  border: 2px solid var(--textcolor);
-  background-color: var(--divcolor);
+button:hover{
+  transform: scale(1.15);
+  cursor: pointer; 
 }
 
 .menu{
   background-color: var(--divcolor);
   border-radius: 20px;
-  margin: 20px;
   font-family: "Jersey 10", sans-serif;
   padding-top: 20px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  text-align: center;
+  margin-right: 30px;
+  margin-left: 30px;
+
+}
+
+.colorthemes{
+  margin-right: auto;
+}
+
+.textsizes{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pets{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .menu h2{
-  line-height: 50px;
+  line-height: 10px;
   letter-spacing: 2px;
 }
 
@@ -82,6 +96,8 @@ button{
   height: 400px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
 }
 
 img{
@@ -108,36 +124,53 @@ img{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
   margin: 20px;
+  text-align: center;
+
 }
 
 :root {
-  --light-gray: #b5b5b5;
-  --mid-gray: #767676;
-  --dark-gray: #363636;
+/*colors*/
+  --lightgray: #b5b5b5;
+  --midgray: #767676;
+  --darkgray: #363636;
   --light: #f5f5f5;
   --dark: #000000;
   --lightred: #ffcdcd;
-  --red: #f25d5d;
+  --red: #ff8f8f;
   --darkred: #561818;
+  --yellow: #fff19e;
+  --lightblue: #9db6c2;
+  --darkblue:  #00334e;
+  --midblue: #4a82ba;
 
+  /*sizes*/
+  --small: 10px;
+  --default: 30px;
+  --large: 50px;
 
   /* Intentions */
-  --primary: var(--light);
-  --secondary: var(--dark);
+  --textcolor: var(--darkblue);
+  --divcolor: var(--red);
+  --textsize: var(--default);
 }
 
-.lightmode {
+.default {
+  --textcolor: var(--darkblue);
+  --divcolor: var(--red);
+}
+
+.light {
   background-color: var(--light);
-  --textcolor: var(--dark);
-  --divcolor: var(--light-gray);
+  --textcolor: var(--darkgray);
+  --divcolor: var(--lightgray);
 }
 
-.darkmode {
+.dark {
   background-color: var(--dark);
   --textcolor: var(--light);
-  --divcolor: var(--dark-gray);
+  --divcolor: var(--darkgray);
 }
 
 .warm {
@@ -147,11 +180,22 @@ img{
 }
 
 .cold{
-  background-color: #d0f0ff;
-  --textcolor: #00334e;
-  --divcolor: #66b2ff;
+  background-color:var(--lightblue);
+  --textcolor: var(--darkblue);
+  --divcolor: var(--midblue);
 }
 
+.smalltext{
+  --textsize: var(--smallsize);
+}
+
+.largetext{
+  --textsize: var(--large);
+}
+
+.defaulttext{
+  --textsize: var(--default);
+}
 
 @media screen and (max-width: 600px) {
 }
