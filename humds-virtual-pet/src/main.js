@@ -11,6 +11,54 @@ const pets = [
     level: 10,
     happiness: 10,
     unlocked: true
+  },
+  {
+    name: "Placeholder",
+    hunger: 10,
+    energy: 10,
+    level: 10,
+    happiness: 10,
+    unlocked: true
+  },
+  {
+    name: "Placeholder",
+    hunger: 10,
+    energy: 10,
+    level: 10,
+    happiness: 10,
+    unlocked: true
+  },
+  {
+    name: "Placeholder",
+    hunger: 10,
+    energy: 10,
+    level: 10,
+    happiness: 10,
+    unlocked: true
+  },
+  {
+    name: "Placeholder",
+    hunger: 10,
+    energy: 10,
+    level: 10,
+    happiness: 10,
+    unlocked: true
+  },
+  {
+    name: "Placeholder",
+    hunger: 10,
+    energy: 10,
+    level: 10,
+    happiness: 10,
+    unlocked: true
+  },
+  {
+    name: "Placeholder",
+    hunger: 10,
+    energy: 10,
+    level: 10,
+    happiness: 10,
+    unlocked: true
   }
 ]
 
@@ -29,7 +77,7 @@ document.querySelectorAll(".textselector").forEach(btn =>
 const petsDiv = document.querySelector(".pets");
 
 function insertpet(pet){
-  petsDiv.insertAdjacentHTML
+  petsDiv.insertAdjacentHTML(
   ("afterbegin")
     `<div class="pet"></div>
     <h2>${pet.name}</h2>
@@ -38,11 +86,26 @@ function insertpet(pet){
     <p><span>Level: ${pet.level}</span></p>
     <p><span>Happiness: ${pet.happiness}</span></p>
     `
+  );
 }
 
 const viewpets= document.querySelector(".viewpets");
-
 viewpets.addEventListener("click", () => {
-  pets.forEach(insertpet);
+  if (pets.unlocked === true){
+    pets.forEach(pet => {insertpet(pet)});
+  }
 }
 );
+
+const stats = document.querySelector(".stats");
+function updatestats(){
+
+}
+
+const actions = document.querySelectorAll(".actions");
+actions.forEach(button => {
+  button.addEventListener("click", () => {
+    const action = button.id;
+    if action === 
+  })
+})
