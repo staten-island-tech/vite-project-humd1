@@ -56,10 +56,26 @@ const pets = [
     name: "Placeholder",
     hunger: 10,
     energy: 10,
-    level: 10,
+    level: 0,
     happiness: 10,
     unlocked: true
   }
+]
+
+
+const foodoptions = [
+  {
+    name: "Placeholder",
+    fill: 10, 
+  }, 
+  {
+    name: "Placeholder",
+    fill: 20, 
+  }, 
+  {
+    name: "Placeholder",
+    fill: 30, 
+  }, 
 ]
 
 const body = document.body;
@@ -86,26 +102,46 @@ function insertpet(pet){
     <p><span>Level: ${pet.level}</span></p>
     <p><span>Happiness: ${pet.happiness}</span></p>
     `
-  );
-}
+  )};
 
 const viewpets= document.querySelector(".viewpets");
 viewpets.addEventListener("click", () => {
   if (pets.unlocked === true){
     pets.forEach(pet => {insertpet(pet)});
   }
-}
-);
+});
 
+const maxhunger = pet.hunger; 
 const stats = document.querySelector(".stats");
-function updatestats(){
-
+function updatestats(pet){
+  insertpet.insertAdjacentHTML(
+    ('afterbegin')
+    `<div class= stats></div>
+    <h3><span>Hunger: ${pet.hunger}</span></h3></h3>
+    <h3><span>Hunger: ${pet.energy}</span></h3></h3>
+    <h3><span>Hunger: ${pet.level}</span></h3></h3>
+    <h3><span>Hunger: ${pet.happiness}</span></h3></h3>`
+  )
 }
+
+const container = document.querySelector("container");
 
 const actions = document.querySelectorAll(".actions");
 actions.forEach(button => {
   button.addEventListener("click", () => {
     const action = button.id;
-    if action === 
+    updatestats(selectedpet);
+    if (action === "feed"); 
   })
 })
+
+const save = document.querySelector("#save");
+save.addEventListener("click", () => {
+  localStorage.setItem("pet","mypet")
+})
+
+const reset = document.querySelector('#reset')
+reset.addEventListener("click", () => {
+  localStorage.clear();
+})
+
