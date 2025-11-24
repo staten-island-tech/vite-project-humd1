@@ -114,7 +114,7 @@ viewpets.addEventListener("click", () => {
 const maxhunger = pet.hunger; 
 const stats = document.querySelector(".stats");
 function updatestats(pet){
-  insertpet.insertAdjacentHTML(
+  insertpet.insertAdjacentHTML(=
     ('afterbegin')
     `<div class= stats></div>
     <h3><span>Hunger: ${pet.hunger}</span></h3></h3>
