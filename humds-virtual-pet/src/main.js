@@ -10,7 +10,6 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
-    unlocked: true
   },
   {
     name: "Placeholder",
@@ -18,7 +17,6 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
-    unlocked: true
   },
   {
     name: "Placeholder",
@@ -26,7 +24,6 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
-    unlocked: true
   },
   {
     name: "Placeholder",
@@ -34,7 +31,6 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
-    unlocked: true
   },
   {
     name: "Placeholder",
@@ -42,7 +38,6 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
-    unlocked: true
   },
   {
     name: "Placeholder",
@@ -50,7 +45,6 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
-    unlocked: true
   },
   {
     name: "Placeholder",
@@ -58,7 +52,6 @@ const pets = [
     energy: 10,
     level: 0,
     happiness: 10,
-    unlocked: true
   }
 ]
 
@@ -79,11 +72,12 @@ const foodoptions = [
 ]
 
 const body = document.body;
+const container = document.querySelector("container");
 
+/* THEMES */
 document.querySelectorAll(".colorselector").forEach(btn =>
   btn.addEventListener("click", () => body.className = btn.id)
 );
-
 
 document.querySelectorAll(".textselector").forEach(btn =>
   btn.addEventListener("click", () => body.className = btn.id)
@@ -111,9 +105,20 @@ viewpets.addEventListener("click", () => {
   }
 });
 
+const actions = document.querySelectorAll(".actions");
+actions.forEach(button => {
+  button.addEventListener("click", () => {
+    updatestats(selectedpet);
+  })
+})
+
+
 const maxhunger = pet.hunger; 
 const stats = document.querySelector(".stats");
 function updatestats(pet){
+  if (action ===  "feed"){
+    const fullness = pet.hunger + selectedfood.fill;
+  }
   insertpet.insertAdjacentHTML(
     ('afterbegin')
     `<div class= stats></div>
@@ -124,16 +129,7 @@ function updatestats(pet){
   )
 }
 
-const container = document.querySelector("container");
 
-const actions = document.querySelectorAll(".actions");
-actions.forEach(button => {
-  button.addEventListener("click", () => {
-    const action = button.id;
-    updatestats(selectedpet);
-    if (action === "feed"); 
-  })
-})
 
 const save = document.querySelector("#save");
 save.addEventListener("click", () => {
