@@ -10,10 +10,11 @@
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
     </style>
   </head>
-    <div id="app"></div>
+  <body>
+    <div class = "interface">
     <div class = "heading">
-        <h1>Raise a Pokemon</h1>
-        <h2>By Humd Baig!</h2>
+        <h1>Raise a Pokémon</h1>
+        <h2>(Because this was the best option)</h2>
     </div>
     <div class="menu">
       <div class="colorthemes">
@@ -24,31 +25,22 @@
       <button id="cold" class = "colorselector">cold</button>
       <button id="warm" class = "colorselector">warm</button>
       </div>
-
-      <div class="textsizes">
-      <h2>Text Sizes:</h2>
-      <button id="default" class = "textselector" id="defaulttext"> default</button>
-      <button id="small" class = "textselector" id="smalltext"> small</button>
-      <button id="large" class = "textselector" id="largetext"> large </button>
-      </div>
-
       <div class= "pets">
       <h2>Pets:</h2>
       <button> view pets</button>
       </div>
-
     </div>
     <div class="petwindow">
         <img src="" alt="">
     </div>
   
 <section class="container">
-    <div class= "stats">
+   <!--  <div class= "stats">
         <h3>Hunger: <span id="hunger"></span></h3>
         <h3>Happiness: <span id="happiness"></span></h3>
         <h3>Energy: <span id="energy"></span></h3>
         <h3>"Your pet is _____!</h3>
-    </div>
+    </div> -->
     <div class="actions">
         <button id="feed">feed</button>
         <button id="play">play</button>
@@ -61,4 +53,5 @@
 </section>
     <script type="module" src="/src/main.js"></script>
   </body>
+  </div>
 </html>

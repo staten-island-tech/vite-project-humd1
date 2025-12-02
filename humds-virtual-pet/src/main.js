@@ -10,6 +10,7 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 10,
+
   },
   {
     name: "Placeholder",
@@ -54,7 +55,6 @@ const pets = [
     happiness: 10,
   }
 ]
-
 
 const foodoptions = [
   {
@@ -112,7 +112,6 @@ actions.forEach(button => {
   })
 })
 
-
 const maxhunger = pet.hunger; 
 const stats = document.querySelector(".stats");
 function updatestats(pet){
@@ -130,7 +129,6 @@ function updatestats(pet){
 }
 
 
-
 const save = document.querySelector("#save");
 save.addEventListener("click", () => {
   localStorage.setItem("pet","mypet")
@@ -141,3 +139,20 @@ reset.addEventListener("click", () => {
   localStorage.clear();
 })
 
+
+function updateimage(){
+  while (selectedpet.hunger <= selectedpet.hunger * 0.9){
+    
+  }
+  if (selectedpet.hunger <= selectedpet.hunger*0.3 || selectedpet.happiness <= selectedpet.happiness * 0.3){
+
+
+  }
+}
+
+const seomthign= document.querySelector(".viewpets");
+viewpets.addEventListener("click", () => {
+  if (pets.unlocked === true){
+    pets.forEach(pet => {insertpet(pet)});
+  }
+});

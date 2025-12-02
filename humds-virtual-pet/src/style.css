@@ -1,13 +1,12 @@
 html,
 body,
 * {
-  font-size: var(--textsize);
+  font-size: 20px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   color: var(--textcolor);
 }
-
 .jersey-10-regular {
   font-family: "Jersey 10", sans-serif;
   font-weight: 400;
@@ -22,21 +21,22 @@ body,
 
 .heading{
   background-color: var(--divcolor);
-  border-radius: 20px;
+  border-radius: 3px;
+  border-color: var(--textcolor);
   padding: 20px;
   margin: 20px;
   text-align: center;
 }
 
 .heading h1{
-  font-size: var(--textsize)*2;
+  font-size: 60px;
   letter-spacing: 2px;
   margin: 20px;
   font-family: "Jersey 10", sans-serif;
 }
 
 .heading h2{
-  font-size: var(--textsize)*1.2;
+  font-size: 20px;
   font-family: "VT323", monospace;
 }
 
@@ -55,14 +55,12 @@ button:hover{
   cursor: pointer; 
 }
 
-.menu{
+.colorthemes{
   background-color: var(--divcolor);
   border-radius: 20px;
   font-family: "Jersey 10", sans-serif;
   padding-top: 20px;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row;
   display: flex;
   text-align: center;
   margin-right: 30px;
@@ -74,20 +72,11 @@ button:hover{
   margin-right: auto;
 }
 
-.textsizes{
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .pets{
   margin-left: auto;
   margin-right: auto;
 }
 
-.menu h2{
-  line-height: 10px;
-  letter-spacing: 2px;
-}
 
 .petwindow{
   background-color: var(--divcolor);
@@ -98,6 +87,7 @@ button:hover{
   margin-right: auto;
   margin-top: 20px;
   text-align: center;
+
 }
 
 img{
@@ -122,43 +112,35 @@ img{
 
 .container{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin: 20px;
   text-align: center;
-
 }
 
 :root {
 /*colors*/
-  --lightgray: #b5b5b5;
+  --lightgray: #dadada;
   --midgray: #767676;
   --darkgray: #363636;
   --light: #f5f5f5;
   --dark: #000000;
   --lightred: #ffcdcd;
   --red: #ff8f8f;
-  --darkred: #561818;
-  --yellow: #fff19e;
-  --lightblue: #9db6c2;
-  --darkblue:  #00334e;
+  --darkred: #7a2a2a;
+  --yellow: #ffdc8c85;
+  --lightblue: #98c0e8;
+  --darkblue:  #163a5e;
   --midblue: #4a82ba;
 
-  /*sizes*/
-  --small: 10px;
-  --default: 30px;
-  --large: 50px;
-
   /* Intentions */
-  --textcolor: var(--darkblue);
-  --divcolor: var(--red);
-  --textsize: var(--default);
+  --textcolor: var(--midblue);
+  --divcolor: var(--lightred);
 }
 
 .default {
-  --textcolor: var(--darkblue);
-  --divcolor: var(--red);
+  --textcolor: var(--midblue);
+  --divcolor: var(--lightred);
 }
 
 .light {
@@ -183,18 +165,6 @@ img{
   background-color:var(--lightblue);
   --textcolor: var(--darkblue);
   --divcolor: var(--midblue);
-}
-
-.smalltext{
-  --textsize: var(--smallsize);
-}
-
-.largetext{
-  --textsize: var(--large);
-}
-
-.defaulttext{
-  --textsize: var(--default);
 }
 
 @media screen and (max-width: 600px) {
