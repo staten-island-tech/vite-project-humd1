@@ -5,54 +5,54 @@ import { setupCounter } from './counter.js'
 
 const pets = [
   {
-    name: "Placeholder",
+    name: "Pichu",
     hunger: 10,
     energy: 10,
     level: 10,
-    happiness: 10,
+    happiness: 50,
 
   },
   {
-    name: "Placeholder",
+    name: "Wooper",
     hunger: 10,
     energy: 10,
     level: 10,
-    happiness: 10,
+    happiness: 50,
   },
   {
-    name: "Placeholder",
+    name: "Togepi",
     hunger: 10,
     energy: 10,
     level: 10,
-    happiness: 10,
+    happiness: 50,
   },
   {
-    name: "Placeholder",
+    name: "Cleffa",
     hunger: 10,
     energy: 10,
     level: 10,
-    happiness: 10,
+    happiness: 50,
   },
   {
-    name: "Placeholder",
+    name: "Azurill",
     hunger: 10,
     energy: 10,
     level: 10,
-    happiness: 10,
+    happiness: 50,
   },
   {
-    name: "Placeholder",
+    name: "Wynaut",
     hunger: 10,
     energy: 10,
     level: 10,
-    happiness: 10,
+    happiness: 50,
   },
   {
-    name: "Placeholder",
+    name: "Munchlax",
     hunger: 10,
     energy: 10,
     level: 0,
-    happiness: 10,
+    happiness: 50,
   }
 ]
 
@@ -84,7 +84,60 @@ document.querySelectorAll(".textselector").forEach(btn =>
 );
 
 
-const petsDiv = document.querySelector(".pets");
+/*SHOW PETS*/
+const interfaceBox = document.querySelector(".interface");
+let originalUI = interfaceBox.innerHTML;
+
+backtogame();
+
+function backtogame() {
+  const viewPetsBtn = document.querySelector(".pets button");
+  viewPetsBtn.addEventListener("click", showPetSelection);
+
+}
+
+function showPetSelection() {
+  interfaceBox.innerHTML = `
+    <div class="pet-select-screen">
+      <h1>Select Your Pet</h1>
+      <div class="pet-list">
+        ${pets.map((pet, index) => `
+          <button class="pet-option" data-index="${index}">
+            ${pet.name}
+          </button>
+        `).join("")}
+      </div>
+      <button id="backToGame">Back</button>
+    </div>
+  `;
+  attachPetScreenEvents();
+}
+
+function attachPetScreenEvents() {
+  document.querySelectorAll(".pet-option").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = btn.dataset.index;
+      selectPet(index);
+    });
+  });
+
+  document.getElementById("backToGame").addEventListener("click", () => {
+    restoreGameUI();
+  });
+}
+
+function restoreGameUI() {
+  interfaceBox.innerHTML = originalUI;
+  backtogame(); 
+}
+
+function selectPet(index) {
+  const chosen = pets[index];
+  console.log("Selected:", chosen.name);
+  restoreGameUI();
+}
+
+/* const petsDiv = document.querySelector(".pets");
 
 function insertpet(pet){
   petsDiv.insertAdjacentHTML(
@@ -155,4 +208,4 @@ viewpets.addEventListener("click", () => {
   if (pets.unlocked === true){
     pets.forEach(pet => {insertpet(pet)});
   }
-});
+}); */

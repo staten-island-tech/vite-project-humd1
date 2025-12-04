@@ -19,13 +19,18 @@ body,
   font-style: normal;
 }
 
+.interface {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .heading{
   background-color: var(--divcolor);
-  border-radius: 3px;
   border-color: var(--textcolor);
-  padding: 20px;
-  margin: 20px;
+  padding-bottom: 30px;
   text-align: center;
+  width: 100%;
 }
 
 .heading h1{
@@ -44,10 +49,10 @@ button{
   font-family: "VT323", monospace;
   padding: 10px;
   margin: 10px;
-  border-radius: 10px;
   border: 2px solid var(--textcolor);
   background-color: var(--divcolor);
   color: var(--textcolor);
+  width: 10vw;
 }
 
 button:hover{
@@ -55,59 +60,76 @@ button:hover{
   cursor: pointer; 
 }
 
-.colorthemes{
-  background-color: var(--divcolor);
-  border-radius: 20px;
-  font-family: "Jersey 10", sans-serif;
-  padding-top: 20px;
-  flex-flow: row;
+.menu{
   display: flex;
+  flex-direction: row;   
+  justify-content: center; 
+  align-items: flex-start;
+  gap: 30px;            
+  width: 100%;
+  margin-top: 20px;
+  background-color: var(--divcolor);
+}
+
+.colorthemes,
+.pets {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30x;
+  gap: 8px;
+  font-family: "VT323", monospace;
+}
+
+
+.pet-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: var(--divcolor);
+  padding: 30px;
+  height: 50vh;
+  font-family: "VT323", monospace;
+  text-align: center;
+  border: 3px solid var(--textcolor);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: var(--divcolor);
+  padding: 30px;
+  height: 50vh;
+  font-family: "VT323", monospace;
   text-align: center;
   margin-right: 30px;
-  margin-left: 30px;
-
+  border: 3px solid var(--textcolor);
 }
 
-.colorthemes{
-  margin-right: auto;
-}
-
-.pets{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-.petwindow{
+.petwindow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--divcolor);
-  border-radius: 20px;
-  width: 400px;
-  height: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  text-align: center;
-
+  width: 50vw;
+  height: 50vh;
+  border: 3px solid var(--textcolor);
 }
 
-img{
+.petwindow img {
   width: 300px;
   height: 300px;
-}
-
-.stats{
-  background-color: var(--divcolor);
-  border-radius: 20px;
-  font-family: "VT323", monospace;
-  padding: 20px;
-  margin: 20px;
-  line-height: 50px;
-}
-
-.actions{
-  background-color: var(--divcolor);
-  border-radius: 20px;
-  font-family: "Jersey 10", sans-serif;
 }
 
 .container{
@@ -116,6 +138,15 @@ img{
   justify-content: space-between;
   margin: 20px;
   text-align: center;
+  flex-flow: row; 
+}
+
+.gameload {
+  margin-top: auto; 
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 :root {
