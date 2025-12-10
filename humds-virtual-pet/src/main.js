@@ -1,7 +1,7 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import "./style.css";
+import javascriptLogo from "./javascript.svg";
+import viteLogo from "/vite.svg";
+import { setupCounter } from "./counter.js";
 
 const pets = [
   {
@@ -10,7 +10,10 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 50,
-
+    images: {
+      happy: "/images/pichu_happy.png",
+      sad: "/images/pichu_sad.png"
+    }
   },
   {
     name: "Wooper",
@@ -18,6 +21,10 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 50,
+    images: {
+      happy: "/images/wooper_happy.png",
+      sad: "/images/wooper_sad.png"
+    }
   },
   {
     name: "Togepi",
@@ -25,6 +32,11 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 50,
+    images: {
+      happy: "/images/togepi_happy.png",
+      sad: "/images/togepi_sad.png"
+
+    }
   },
   {
     name: "Cleffa",
@@ -32,6 +44,10 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 50,
+    images: {
+      happy: "/images/cleffa_happy.png",
+      sad: "/images/cleffa_sad.png"
+    }
   },
   {
     name: "Azurill",
@@ -39,6 +55,10 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 50,
+    images: {
+      happy: "/images/azurill_happy.png",
+      sad: "/images/azurill_sad.png"
+    }
   },
   {
     name: "Wynaut",
@@ -46,6 +66,10 @@ const pets = [
     energy: 10,
     level: 10,
     happiness: 50,
+    images: {
+      happy: "/images/wynaut_happy.png",
+      sad: "/images/wynaut_sad.png"
+    }
   },
   {
     name: "Munchlax",
@@ -53,159 +77,168 @@ const pets = [
     energy: 10,
     level: 0,
     happiness: 50,
-  }
-]
+    images: {
+      happy: "/images/munchlax_happy.png",
+      sad: "/images/munchlax_sad.png"
+    }
+  },
+];
 
-const foodoptions = [
-  {
-    name: "Placeholder",
-    fill: 10, 
-  }, 
-  {
-    name: "Placeholder",
-    fill: 20, 
-  }, 
-  {
-    name: "Placeholder",
-    fill: 30, 
-  }, 
-]
+let selectedpet = null;
 
-const body = document.body;
-const container = document.querySelector("container");
-
-/* THEMES */
-document.querySelectorAll(".colorselector").forEach(btn =>
-  btn.addEventListener("click", () => body.className = btn.id)
-);
-
-document.querySelectorAll(".textselector").forEach(btn =>
-  btn.addEventListener("click", () => body.className = btn.id)
-);
-
-
-/*SHOW PETS*/
-const interfaceBox = document.querySelector(".interface");
-let originalUI = interfaceBox.innerHTML;
-
-backtogame();
-
-function backtogame() {
-  const viewPetsBtn = document.querySelector(".pets button");
-  viewPetsBtn.addEventListener("click", showPetSelection);
-
+function startgame() {
+  createpopup();
+  closebutton();
+  loadallpets();
+  decreasestats();
+  petbutton();
+  themebuttons();
+  actions();
+  saveandreset();
 }
 
-function showPetSelection() {
-  interfaceBox.innerHTML = `
-    <div class="pet-select-screen">
-      <h1>Select Your Pet</h1>
-      <div class="pet-list">
-        ${pets.map((pet, index) => `
-          <button class="pet-option" data-index="${index}">
-            ${pet.name}
-          </button>
-        `).join("")}
-      </div>
-      <button id="backToGame">Back</button>
+startgame();
+
+function createpopup() {
+  const popup = document.createElement("div");
+  popup.id = "popupbox";
+  popup.className = "popup";
+  popup.style.display = "none";
+
+  popup.insertAdjacentHTML('beforeend', `
+    <div class="petcontent">
+      <h2>Select Your Pet</h2>
+      <div class="petoptions"></div>
+      <button id="closepetpopup">Close</button>
     </div>
-  `;
-  attachPetScreenEvents();
+  `);
+  document.body.appendChild(popup);
 }
 
-function attachPetScreenEvents() {
-  document.querySelectorAll(".pet-option").forEach(btn => {
+function closebutton() {
+  document.addEventListener("click", (e) => {
+    if (e.target.id === "closepetpopup") closepopup();
+  });
+}
+
+function petbutton() {
+  const btn = document.querySelector(".pets button");
+  if (btn) btn.addEventListener("click", openpopup);
+}
+
+function themebuttons() {
+  document.querySelectorAll(".colorselector").forEach(btn =>
     btn.addEventListener("click", () => {
-      const index = btn.dataset.index;
-      selectPet(index);
+      document.body.className = btn.id;
+    })
+  );
+}
+
+function actions() {
+  addaction("feed", () => { selectedpet.hunger = Math.max(0, selectedpet.hunger-10); });
+  addaction("play", () => { selectedpet.happiness = Math.min(100, selectedpet.happiness+10); });
+  addaction("sleep", () => { selectedpet.energy = Math.min(100, selectedpet.energy+10); });
+}
+
+function addaction(id, update) {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    if(!selectedpet) return;
+    update();
+    updatepet();
+  });
+}
+
+function saveandreset() {
+  const savebtn = document.getElementById("save");
+  const resetbtn = document.getElementById("reset");
+  if(savebtn) savebtn.addEventListener("click", saveallpets);
+  if(resetbtn) resetbtn.addEventListener("click", resetallpets);
+}
+
+function openpopup() {
+  const popup = document.getElementById("popupbox");
+  const area = popup.querySelector(".petoptions");
+  area.innerHTML = "";
+
+  pets.forEach((pet, i) => {
+    area.insertAdjacentHTML('beforeend', 
+      `<button class="petoption" data-index="${i}">${pet.name}</button>`
+    );
+  });
+
+  area.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => selectpet(btn.dataset.index));
+  });
+  popup.style.display = "flex";
+}
+
+function closepopup() {
+  document.getElementById("popupbox").style.display = "none";
+}
+
+function selectpet(index) {
+  selectedpet = pets[index];
+  closepopup();
+  updatepet();
+}
+
+function updatepet() {
+  if (!selectedpet) return;
+
+  const img = document.querySelector(".petwindow img");
+
+  if (((selectedpet.happiness+(100-selectedpet.hunger)+selectedpet.energy)/3)> 60) {
+    img.src = selectedpet.images.happy;
+  } else {
+    img.src = selectedpet.images.sad;
+  }
+
+  img.alt = selectedpet.name;
+
+  document.getElementById("hunger").textContent = Math.round(selectedpet.hunger);
+  document.getElementById("happiness").textContent = Math.round(selectedpet.happiness);
+  document.getElementById("energy").textContent = Math.round(selectedpet.energy);
+}
+
+function saveallpets() {
+  localStorage.setItem("savedpets", JSON.stringify(pets));
+  alert("all pets saved!");
+}
+
+function loadallpets() {
+  const saved = JSON.parse(localStorage.getItem("savedpets"));
+  if(!saved) return;
+
+  saved.forEach((p, i) => {
+    pets[i] = {...pets[i], ...p};
+  });
+
+  if(selectedpet) {
+    selectedpet = pets.find(p => p.name === selectedpet.name);
+    updatepet();
+  }
+}
+
+function resetallpets() {
+  localStorage.removeItem("savedpets");
+  pets.forEach(p => { p.hunger=50; p.happiness=50; p.energy=50; });
+  selectedpet = null;
+  const img = document.querySelector(".petwindow img");
+  if(img) img.src = "";
+  document.getElementById("hunger").textContent = "";
+  document.getElementById("happiness").textContent = "";
+  document.getElementById("energy").textContent = "";
+}
+
+function decreasestats() {
+  setInterval(() => {
+    pets.forEach(pet => {
+      pet.hunger = Math.min(100, pet.hunger+1);
+      pet.energy = Math.max(0, pet.energy-1);
+      pet.happiness = Math.max(0, pet.happiness-0.5);
     });
-  });
-
-  document.getElementById("backToGame").addEventListener("click", () => {
-    restoreGameUI();
-  });
+    if(selectedpet) updatepet();
+  }, 1500);
 }
-
-function restoreGameUI() {
-  interfaceBox.innerHTML = originalUI;
-  backtogame(); 
-}
-
-function selectPet(index) {
-  const chosen = pets[index];
-  console.log("Selected:", chosen.name);
-  restoreGameUI();
-}
-
-/* const petsDiv = document.querySelector(".pets");
-
-function insertpet(pet){
-  petsDiv.insertAdjacentHTML(
-  ("afterbegin")
-    `<div class="pet"></div>
-    <h2>${pet.name}</h2>
-    <p><span>Hunger: ${pet.hunger}</span></p>
-    <p><span>Energy: ${pet.energy}</span></p>
-    <p><span>Level: ${pet.level}</span></p>
-    <p><span>Happiness: ${pet.happiness}</span></p>
-    `
-  )};
-
-const viewpets= document.querySelector(".viewpets");
-viewpets.addEventListener("click", () => {
-  if (pets.unlocked === true){
-    pets.forEach(pet => {insertpet(pet)});
-  }
-});
-
-const actions = document.querySelectorAll(".actions");
-actions.forEach(button => {
-  button.addEventListener("click", () => {
-    updatestats(selectedpet);
-  })
-})
-
-const maxhunger = pet.hunger; 
-const stats = document.querySelector(".stats");
-function updatestats(pet){
-  if (action ===  "feed"){
-    const fullness = pet.hunger + selectedfood.fill;
-  }
-  insertpet.insertAdjacentHTML(
-    ('afterbegin')
-    `<div class= stats></div>
-    <h3><span>Hunger: ${pet.hunger}</span></h3></h3>
-    <h3><span>Hunger: ${pet.energy}</span></h3></h3>
-    <h3><span>Hunger: ${pet.level}</span></h3></h3>
-    <h3><span>Hunger: ${pet.happiness}</span></h3></h3>`
-  )
-}
-
-
-const save = document.querySelector("#save");
-save.addEventListener("click", () => {
-  localStorage.setItem("pet","mypet")
-})
-
-const reset = document.querySelector('#reset')
-reset.addEventListener("click", () => {
-  localStorage.clear();
-})
-
-
-function updateimage(){
-  while (selectedpet.hunger <= selectedpet.hunger * 0.9){
-    
-  }
-  if (selectedpet.hunger <= selectedpet.hunger*0.3 || selectedpet.happiness <= selectedpet.happiness * 0.3){
-
-
-  }
-}
-
-const seomthign= document.querySelector(".viewpets");
-viewpets.addEventListener("click", () => {
-  if (pets.unlocked === true){
-    pets.forEach(pet => {insertpet(pet)});
-  }
-}); */
